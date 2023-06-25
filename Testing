@@ -1,50 +1,52 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/IreXion-UI-Library/main/IreXion%20UI%20Library"))()
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Kavo-Ui/main/Darkrai%20Ui", true))()
 
-local Gui = Library:AddGui({
-Title = {"IreXion", "UI Library"},
-ThemeColor = Color3.fromRGB(0, 255, 0),
-ToggleKey = Enum.KeyCode.RightShift,
-})
+local Library = DarkraiX:Window("ExplanHUB","","",Enum.KeyCode.Q);
 
-local Tab = Gui:AddTab("Tab")
+Tab1 = Library:Tab("Recommended")
 
-local Category = Tab:AddCategory("Category")
+Tab2 = Library:Tab("Home")
 
-local Button = Category:AddButton("Button", function()
-print("Button Pressed")
+Tab1:Seperator("If You Die And Lose Toggle")
+
+Tab1:Line()
+
+Tab1:Seperator("Press This Button To Bring Up Toggle Back")
+
+Tab1:Line()
+
+Tab1:Button("Bring Up The Toggle",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/GamerAbhiyanYT/Explan/main/Toggle"))()
 end)
 
-local Toggle = Category:AddToggle("Toggle", false, function(toggle)
-print(toggle)
+Tab1:Seperator("I Still Recommend To Always Press This After Executing This Script")
+
+Tab1:Line()
+
+Tab1:Button("Rejoin Botton On Disconnetced",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/scripts-2/main/rejoin%20button%20for%20kick%20message.lua"))()
 end)
 
-local Box = Category:AddBox("Box", function(str)
-print(str)
+Tab1:Toggle("Toggle",false,function(state)
+if state then
+print("yo") -- Script Executes When The Toggle/Switch Is On!
+else
+print("not yo :(")
 end)
 
-local Label = Category:AddLabel("Label")
-
-local DualLabel = Category:AddDualLabel({"Label1", "Label2"})
-
-local Slider = Category:AddSlider("Slider", 1, 100, 50, function(val)
-print("Slider Value:", val)
+Tab1:Slider("Slider",1,100,25,function(value)
+        print(value) -- Script Executes When The Slider Moves
 end)
 
-local Dropdown = Category:AddDropdown("Dropdown", {
-"Item 1",
-"Item 2",
-"Item 3",
-"Item 4",
-"Item 5",
-"Item 6",
-"Item 7",
-"Item 8",
-"Item 9",
-"Item 10",
-}, function(name)
-print(name)
+Tab1:Dropdown("Dropdown",{"yo","sus","pro"},function(value)
+            print(value) Selected
 end)
 
-local Bind = Category:AddBind("Bind", Enum.KeyCode.RightShift, function()
-print("Bind Pressed")
+Tab1:Textbox("Textbox","",true,function(value)
+print(value)
 end)
+
+Tab1:Seperator("A Seperator")
+
+Tab1:Line() -- Just A Line!
+
+DarkraiX:ToggleUi(Q)
