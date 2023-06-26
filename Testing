@@ -1,52 +1,46 @@
-local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Kavo-Ui/main/Darkrai%20Ui", true))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+ 
+-- Values & Functions
+_G.Key = "ExplanHubWithKey"
+_G.KeyInput = "string"
+ 
+function CorrectKey()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GamerAbhiyanYT/ExplanHUB-Update/main/GamerAbhiyan"))()
+OrionLib:MakeNotification({
+	Name = "Key!",
+	Content = "You have entered the correct key!",
+	Image = "",
+	Time = 4
+})
+end
 
-local Library = DarkraiX:Window("ExplanHUB","","",Enum.KeyCode.Q);
+local Window = OrionLib:MakeWindow({Name = "ExplanHUB - Key", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = false})
 
-Tab1 = Library:Tab("Recommended")
+local tab1 = Window:MakeTab({
+	Name = "Key System",
+	Icon = "",
+	PremiumOnly = false
+})
 
-Tab2 = Library:Tab("Home")
+local section1 = tab1:AddSection({
+	Name = "Key"
+})
 
-Tab1:Seperator("If You Die And Lose Toggle")
+tab1:AddTextbox({
+	Name = "Enter Key",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		_G.KeyInput = Value
+	end	  
+})
 
-Tab1:Line()
-
-Tab1:Seperator("Press This Button To Bring Up Toggle Back")
-
-Tab1:Line()
-
-Tab1:Button("Bring Up The Toggle",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/GamerAbhiyanYT/Explan/main/Toggle"))()
-end)
-
-Tab1:Seperator("I Still Recommend To Always Press This After Executing This Script")
-
-Tab1:Line()
-
-Tab1:Button("Rejoin Botton On Disconnetced",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/scripts-2/main/rejoin%20button%20for%20kick%20message.lua"))()
-end)
-
-Tab1:Toggle("Toggle",false,function(state)
-if state then
-print("yo") -- Script Executes When The Toggle/Switch Is On!
-else
-print("not yo :(")
-end)
-
-Tab1:Slider("Slider",1,100,25,function(value)
-        print(value) -- Script Executes When The Slider Moves
-end)
-
-Tab1:Dropdown("Dropdown",{"yo","sus","pro"},function(value)
-            print(value) Selected
-end)
-
-Tab1:Textbox("Textbox","",true,function(value)
-print(value)
-end)
-
-Tab1:Seperator("A Seperator")
-
-Tab1:Line() -- Just A Line!
-
-DarkraiX:ToggleUi(Q)
+tab1:AddButton({
+	Name = "Check Key!",
+	Callback = function()
+            if _G.KeyInput == _G.Key then                
+                wait(0.5)
+                CorrectKey()
+            end
+  	end    
+})
